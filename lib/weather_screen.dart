@@ -19,19 +19,12 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
   Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
-      // double latitude = 28.70;
-      // double longitude = 77.10;
-      // String cityName = 'London';
+      String cityName = 'delhi';
       final res = await http.get(
         Uri.parse(
-            // 'https://api.openweathermap.org/data/2.5/forecast?q=delhi&APPID=0976c3f295d9308284623911cffb8333'
-            'https://api.openweathermap.org/data/2.5/weather?lat=28.70&lon=77.10&appid=$openWeatherAPIKey'
-            // 'https://api.openweathermap.org/data/2.5/weather?lat=28.70&lon=77.10&appid=0976c3f295d9308284623911cffb8333'
-            // 'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$openWeatherAPIKey',
-            ),
+            'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$openWeatherAPIKey'),
       );
 
-      // print(res.body);
       final data = jsonDecode(res.body);
 
       if (data['cod'] != '200') {
